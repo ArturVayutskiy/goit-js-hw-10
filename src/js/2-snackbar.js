@@ -1,5 +1,5 @@
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('.form');
 
@@ -19,18 +19,23 @@ form.addEventListener('submit', function(event) {
 
   promise.then((delay) => {
     iziToast.success({
-      title: 'OK!',
+      title: 'Ok!',
       titleColor: 'white',
       backgroundColor: '#59a10d', 
-      message: `Fulfilled promise in ${delay} ms`,
+      message: `Fulfilled promise in ${delay} ms &nbsp &nbsp &nbsp`,
       messageColor: 'white',
       position: 'topCenter',
+      close: false
+    
     });
   }).catch((delay) => {
     iziToast.error({
       title: 'Error!',
       message: `Rejected promise in ${delay} ms`,
       position: 'topCenter',
+      messageColor: 'white',
+      backgroundColor: 'red',
+      close: false
     });
   });
 });
