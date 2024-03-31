@@ -28,6 +28,10 @@ input {
     padding: 0 16px   ;
 }
 
+input[name="delay"]:hover {
+    border-color: #000;
+}
+
 
 fieldset {
     display: flex;
