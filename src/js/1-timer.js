@@ -20,7 +20,8 @@ const options = {
     const userSelectedDate = selectedDates[0];
 
     if (userSelectedDate < Date.now()) {
-      iziToast.show({
+      iziToast.error({
+        title: 'Error!',
         message: 'Please choose a date in the future',
         messageColor: 'white',
         position: 'topCenter',
@@ -55,8 +56,9 @@ startBtn.addEventListener("click", function() {
     if (timeDifference <= 0) {
       clearInterval(timerInterval);
       document.querySelectorAll(".value").forEach(elem => elem.textContent = "00");
-      iziToast.show({
-        message: 'Completed!',
+      iziToast.success({
+        title: 'Success!',
+        message: 'Countdown is over!',
         messageColor: 'white',
         position: 'topCenter',
         backgroundColor: 'green',
