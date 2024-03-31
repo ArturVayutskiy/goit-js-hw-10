@@ -1,0 +1,89 @@
+.form {
+    width: 360px;
+    margin-top: 20px;
+ }
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 72px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.04em;
+    color: #2e2f42;
+    margin-bottom: 16px;
+}
+
+label:hover {
+    border-color: #000;
+}
+
+input {
+    border: 1px solid #808080;
+    border-radius: 4px;
+    max-width: 360px;
+    height: 40px;
+    padding: 0 16px   ;
+}
+
+
+fieldset {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: #808080;
+    padding-left: 48px;
+    padding-right: 48px;
+    margin-bottom: 24px;
+    max-width: 360px;
+    height: 78px;
+}
+
+fieldset:hover {
+    border-color: #000;
+  }
+
+fieldset input {
+    border: 1px solid #757575;
+    border-radius: 14px;
+    width: 20px;
+    height: 20px;
+}
+
+fieldset label {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    align-items: center;
+    border-radius: 8px;
+    padding: 8px 16px;
+    min-width: 360px;
+    height: 40px;
+    background: #4e75ff;
+    color: #FFF;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.04em;
+    color: #fff;
+    border: none;
+}
+
+
+button:hover {
+    background-color: #6c8cff;
+  }
+
+legend { 
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.04em;
+    color: #2e2f42;
+    margin-bottom: 14px;
+}
