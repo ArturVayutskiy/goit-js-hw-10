@@ -6,9 +6,12 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const dateTimePicker = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector("[data-start]");
+let userSelectedDate;
 
 //БЛОКУЄМО КНОПКУ СТАРТ ПРИ ЗАВАНТАЖЕННІ СТОРІНКИ
-disableStartButton(true);
+toogleStartButton();
+
+
 
 // НАЛАШТУВАННЯ FLATPICKR
 const options = {
@@ -17,7 +20,7 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    const userSelectedDate = selectedDates[0];
+  userSelectedDate = selectedDates[0];
 
     if (userSelectedDate < Date.now()) {
       iziToast.error({
@@ -26,21 +29,24 @@ const options = {
         messageColor: 'white',
         position: 'topCenter',
         backgroundColor: 'red',
-      }) 
-      disableStartButton();
+      });
+      toogleStartButton();
     } else {
-      disableStartButton(false);
+      toogleStartButton(false);
   }
 }
 };
+
 
 // ІНІЦІАЛІЗАЦІЯ КАЛЕНДАРЯ
 flatpickr(dateTimePicker, options);
 
 
+
 // ПРОСЛУХОВУВАЧ ПОДІЙ КНОПКИ СТАРТ
 startBtn.addEventListener("click", function() {
-  const selectedDate = new Date(dateTimePicker.value);
+  const selectedDate = new Date(userSelectedDate);  
+  // ПОПРАВИТЬ!
   const currentDate = new Date();
   let timeDifference = selectedDate - currentDate;
 
@@ -63,20 +69,22 @@ startBtn.addEventListener("click", function() {
         position: 'topCenter',
         backgroundColor: 'green',
       }) 
-      disableStartButton(false);
+      toogleStartButton(false);
+      dateTimePicker.disabled = false;
     } else {
       timeDifference -= 1000;
     }
   }
     updateInterval();
-    disableStartButton();
+    toogleStartButton();
+    dateTimePicker.disabled = true;
 
 const timerInterval = setInterval(updateInterval, 1000); // Таймер для оновлення таймера кожну секунду
 });
 
 
 // ФУНКЦІЯ ДЛЯ СКРИВАННЯ КНОПКИ СТАРТ ПРИ ЗАВАНТАЖЕННІ СТОРІНКИ
-function disableStartButton(flag = true) {
+function toogleStartButton(flag = true) {
   startBtn.disabled = flag;
 }
 
