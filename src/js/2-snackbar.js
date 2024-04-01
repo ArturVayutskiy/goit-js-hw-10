@@ -10,11 +10,13 @@ form.addEventListener('submit', function(event) {
   const state = this.elements.state.value;
 
   const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
     if (state === 'fulfilled') {
-      setTimeout(() => resolve(delay), delay);
-    } else  {
-      setTimeout(() => reject(delay), delay);
+       resolve(delay);   
+    } else {
+      reject(delay);
     }
+    }, delay);
   });
 
   promise.then((delay) => {
@@ -22,7 +24,7 @@ form.addEventListener('submit', function(event) {
       title: 'Ok!',
       titleColor: 'white',
       backgroundColor: '#59a10d', 
-      message: `Fulfilled promise in ${delay} ms &nbsp &nbsp &nbsp`,
+      message: `Fulfilled promise in ${delay} ms`,
       messageColor: 'white',
       position: 'topCenter',
       close: false
